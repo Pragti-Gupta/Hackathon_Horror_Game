@@ -4,6 +4,7 @@ softer: bye felicia i hope your processing units burn
 caregiver: girl bye i did not spend six years on higher education to become a nanny
 male: guess I have to invest in testoterone to get a goddamn job
 white: i'm not tho?????
+~
 2
 white: but I'm not??
 softer: I don't know about that
@@ -15,6 +16,7 @@ RESPONSES2
 no: ok i didn’t want u either
 parasocial: no i swear what we have can be real
 socialize: THERES NO ONE ELSE WHO CAN BE EVERYTHING I WANT. you can be perfect for me.
+~
 2
 parasocial: I just don't really have anyone else to talk to tho...
 socialize: ok you hate me??

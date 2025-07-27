@@ -2,7 +2,7 @@ package Inventories;
 
 import java.util.ArrayList;
 
-class WordInventory {
+public class WordInventory {
     private ArrayList<String> words;
 
     /** Sets up empty ArrayList */
