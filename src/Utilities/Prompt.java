@@ -32,7 +32,7 @@ public class Prompt
 	 */
 	public static String getString (String ask)
 	{
-		System.out.print(ask+ " -> ");
+		System.out.print(ask+ ": ");
 		String input = "";
 		try{
 			input = bufReader.readLine();

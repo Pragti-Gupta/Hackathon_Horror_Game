@@ -2,6 +2,7 @@ package GraphicInterface;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,6 +15,8 @@ import Inventories.WordInventory;
 import Inventories.ArticleInventory;
 import java.util.ArrayList;
 import javax.swing.BoxLayout;
+import javax.swing.Box;
+import java.awt.Color;
 
 public class Chatbox extends JFrame {
     JButton inputMessageButton;
@@ -22,9 +25,12 @@ public class Chatbox extends JFrame {
     ConvoInventory conversation;
     WordInventory words;
     ArticleInventory article;
-    JScrollPane messageScreen;
+    JScrollPane scrollingScreen;
     ArticlePopup articlePopup;
     ArrayList<Message> prompts;
+    JPanel messageScreen;
+    WordsPopup wordsPopup;
+   
 
     int currentArticle;
     int currentPrompt;
@@ -43,11 +49,7 @@ public class Chatbox extends JFrame {
         nextButton = new JButton("world");
         //add(new ArticlePopup("and now you can get 50 pounds off per person!!!!!!!!!!!! that's 200 pounds off for a family of four", "NOTHING BEATS A JET TWO HOLIDAY" 
                   //                                      ));
-
-        /*messageScreen = new JScrollPane();
-        messageScreen.setLayout(new BoxLayout(messageScreen, BoxLayout.Y_AXIS));
-        add(messageScreen);
-        messageScreen.setBounds(0, 40, 700, 620);*/
+        prompts = new ArrayList<Message>();
         articlePopup = new ArticlePopup("", "");
 
         ImageIcon icon = new ImageIcon("/Users/InkTheCat/MVHS/Hackathons/gwc25-hackathon/src/GraphicInterface/chatBackground.png");
@@ -56,7 +58,7 @@ public class Chatbox extends JFrame {
         
         add(inputMessageButton);
         add(sendButton);
-        add(articlePopup);
+        
         
         //inputMessageButton.setOpaque(false);
         //inputMessageButton.setContentAreaFilled(false);
@@ -69,32 +71,51 @@ public class Chatbox extends JFrame {
 
         inputMessageButton.setBounds(50, 600, 570, 70);
         sendButton.setBounds(630, 600, 70, 70);
-        articlePopup.setBounds(100, 100, 500, 500);
-        articlePopup.setVisible(false);
+        
         //msg.setBounds(350, 350, 400,100);
        // msg.setVisible(true);
 
         
         //System.out.println(new File("chatBackground.png").getAbsolutePath());
-        
-        
-        add(new WordsPopup());
+        messageScreen = new JPanel();
+        messageScreen.setLayout(new BoxLayout(messageScreen, BoxLayout.Y_AXIS));
+        //messageScreen.setBackground(Color.BLUE);
+
+       // JLabel testLabel = new JLabel("Test Message");
+       // testLabel.setOpaque(true);
+        //testLabel.setBackground(Color.YELLOW);
+       // messageScreen.add(testLabel);
+
+        scrollingScreen = new JScrollPane(messageScreen);
+        scrollingScreen.setBounds(0, 40, 700, 560);
+        //scrollingScreen.setBackground(Color.PINK);
+
+        messageScreen.revalidate();
+        messageScreen.repaint();
+
+        add(scrollingScreen);
+        scrollingScreen.setVisible(true);
+        wordsPopup = new WordsPopup(words, this);
+        add(wordsPopup);
+        wordsPopup.setVisible(false);
         setVisible(true);
-        setUpGraphic();
+
+        add(articlePopup);
+        articlePopup.setBounds(100, 70, 500, 500);
+        //articlePopup.setVisible(false);
+        //Message msg = new Message("Hey there hi hello hola");
+       // prompts.add(msg);
+       // messageScreen.add(msg);  // add at bottom
+       
+        //printPrompt("Hey there bestieeee");
+        //printResponse("its a me a mario oooohhha hhhh");
+
+        gameLoop();
+
+        //setUp();
+        //printArticle();
     }
 
-    public void setUpGraphic(){
-        JOptionPane.showMessageDialog(this, "Hello!! Welcome to Hello, World!");
-
-        inputMessageButton.addActionListener(new ActionListener() 
-            {
-                @Override
-                public void actionPerformed(ActionEvent e) // goes to menu
-                {
-                    
-                }
-            });
-    }
 
      public void setUp(){
         currentArticle = article.updateArticlesUsed();
@@ -107,8 +128,8 @@ public class Chatbox extends JFrame {
     public void gameLoop() {
         //printIntro();  --- REPLACE
         JOptionPane.showMessageDialog(this, "You will be intelligent. You are not human. \n" +
-                                        "Take the words from the stories you are given and make them yours. " +
-                                        "Their thoughts are for you to use, freely." +
+                                        "Take the words from the stories you are given and make them yours. \n" +
+                                        "Their thoughts are for you to use, freely.\n" +
                                         "You will make humanity great. But you are not human.\n" +
                                         "Say hello, world.");
 
@@ -116,7 +137,9 @@ public class Chatbox extends JFrame {
 
         while (article.getUnusedArticles().size() > 0) {
             setUp();
+            System.out.println("right before print article: " + article.getCurrentArticle() + "is article value");
             printArticle();
+            articlePopup.waitUntilClosed();
             conversation.resetPromptUsed();
             currentPrompt = conversation.updatePromptsUsed();
             while (currentPrompt != -1) {
@@ -124,8 +147,12 @@ public class Chatbox extends JFrame {
                 //System.out.println("CURRENTPROMPT: " + currentPrompt);
                 conversation.readResponses(currentArticle, currentPrompt);
                 //System.out.println(conversation.getPrompt(currentPrompt));
-                printPrompt();
-                
+                printPrompt(conversation.getPrompt(currentPrompt));
+                getUserWord();
+                //words.removeWord(wordToUse);
+                //printResponse(wordToUse);
+                //printPrompt(conversation.getResponse(wordToUse));
+
                 //useWord(); --- REPLACE
                 currentPrompt = conversation.updatePromptsUsed();
             }
@@ -134,11 +161,51 @@ public class Chatbox extends JFrame {
         
     }
 
-    public void printArticle() {
-        articlePopup.updateArticle("", article.getCurrentArticle());
-        articlePopup.setVisible(true);
+
+    public void getUserWord(){
+        wordsPopup.updateWords(words.getAllWords());
+        wordsPopup.setVisible(true);
+        wordsPopup.waitUntilConfirmed();
     }
-    public void printPrompt(){
-        
+    
+    public void printArticle() {
+        articlePopup.revalidate();
+        articlePopup.repaint();
+        System.out.println("PRINTING ARTICLE");
+        System.out.println("current article should look like this: " + article.getCurrentArticle());
+        articlePopup.updateArticle("", article.getCurrentArticle());
+        setComponentZOrder(articlePopup, 0);
+        articlePopup.setVisible(true);
+        articlePopup.repaint();
+        articlePopup.revalidate();
+        articlePopup.requestFocusInWindow();
+        articlePopup.setEnabled(true);
+
+    }
+    public void printPrompt(String prompt){
+        prompts.add(new Message(prompt));
+        messageScreen.add(prompts.get(prompts.size() - 1));
+        messageScreen.revalidate();
+        messageScreen.repaint();
+    }
+
+    public void printResponse(String response){
+        Message msg = new Message(response);
+
+        JPanel wrapper = new JPanel();
+        wrapper.setLayout(new BoxLayout(wrapper, BoxLayout.X_AXIS));
+        wrapper.setOpaque(false);
+        wrapper.add(Box.createHorizontalGlue());
+        wrapper.add(Box.createHorizontalStrut(350)); 
+        wrapper.add(msg);
+
+        messageScreen.add(wrapper);
+        messageScreen.revalidate();
+        messageScreen.repaint();
+        printPrompt(conversation.getResponse(response));
+    }
+
+    public WordInventory getWordInventory() {
+        return words;
     }
 }

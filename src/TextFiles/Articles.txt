@@ -1,5 +1,5 @@
 ARTICLE1
-Using AI to find new hires
+USING AI TO FIND NEW HIRES
 
 When the leading tech company Amazon began using an artificial intelligence to assist in its hiring process, the sexism inherent in the AI’s algorithms very quickly became apparent. The models, being trained on past CV’s and applications, heavily favored <b>male</b> applicants because of how many more men were active in the tech industry as compared to women.
 
@@ -10,7 +10,7 @@ When the leading tech company Amazon began using an artificial intelligence to a
 As more companies began to integrate artificial intelligence in their hiring process, the evidence toward AI holding the same stereotypes that humans do. Women usually take on <b>softer caregiver</b> roles, and men tend to be favored in jobs that require executive action.
 ~
 ARTICLE2
-AI and parasocialism
+AI AND PARASOCIALISM
 Since 2022 and the widespread usage of ChatGPT, the popularity of having conversations with chatbots rather than other human beings has risen drastically. Companies, taking advantage of this popularity, started designing chatbots specifically to <b>socialize</b> and engage with users to simulate the experience of talking to another person. This has raised concerns about the increasing isolation, and consequently emotional vulnerability, of those who fall too deep into talking with these chatbots with <b>no</b> self control. 
 
 “...recent studies have shown that the more lonely people are the more they personify objects, and the more they carry on parasocial relationships with objects.” Medium, 18 March 2024.

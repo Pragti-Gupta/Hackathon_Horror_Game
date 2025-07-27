@@ -1,0 +1,20 @@
+ARTICLE1
+USING AI TO FIND NEW HIRES
+
+When the leading tech company Amazon began using an artificial intelligence to assist in its hiring process, the sexism inherent in the AI’s algorithms very quickly became apparent. The models, being trained on past CV’s and applications, heavily favored male applicants because of how many more men were active in the tech industry as compared to women.
+
+“These tools are not eliminating human bias — they are merely laundering it through software.” American Civil Liberties Union, 12 October 2018.
+
+“The team then evaluated the system’s recommendations across these four demographics for statistical significance. The system preferred: white-associated names 85% of the time versus Black-associated names 9% of the time; and male-associated names 52% of the time versus female-associated names 11% of the time.” University of Washington, 31 October 2024.
+
+As more companies began to integrate artificial intelligence in their hiring process, the evidence toward AI holding the same stereotypes that humans do. Women usually take on softer caregiver roles, and men tend to be favored in jobs that require executive action.
+~
+ARTICLE2
+AI AND PARASOCIALISM
+
+Since 2022 and the widespread usage of ChatGPT, the popularity of having conversations with chatbots rather than other human beings has risen drastically. Companies, taking advantage of this popularity, started designing chatbots specifically to socialize and engage with users to simulate the experience of talking to another person. This has raised concerns about the increasing isolation, and consequently emotional vulnerability, of those who fall too deep into talking with these chatbots with no self control. 
+
+“...recent studies have shown that the more lonely people are the more they personify objects, and the more they carry on parasocial relationships with objects.” Medium, 18 March 2024.
+
+“Moreover, parasocial relationships can have real effects on human emotions and self-perception. For instance, [...] As players repeatedly interacted with [...] virtual characters, they reported feelings of affirmation that compensated for their perceived lack of “masculinity” in real life. As such, parasocial relationships are a topic of practical and ethical concern.” Association for Computing Machinery, June 2024.
+~

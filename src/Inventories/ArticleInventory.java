@@ -18,7 +18,7 @@ public class ArticleInventory {
 
     public void readArticle(int articleNum){
         article = "";
-        Scanner articleReader = FileUtils.openToRead("src/TextFiles/articles.txt");
+        Scanner articleReader = FileUtils.openToRead("src/TextFiles/articlesTerminal.txt");
         String check = "ARTICLE"+articleNum;
         while(articleReader.hasNextLine()){
             if(articleReader.nextLine().equals(check)){
@@ -29,6 +29,7 @@ public class ArticleInventory {
                 }
             }
         }
+       // System.out.println(article);
     }
 
     public ArrayList<String> changeKeyWords(int articleNum){
