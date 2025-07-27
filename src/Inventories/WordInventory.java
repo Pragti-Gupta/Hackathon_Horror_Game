@@ -10,6 +10,12 @@ public class WordInventory {
         words = new ArrayList<String>();
     }
 
+    public void addWordsToInventory(ArrayList<String> keyWords){
+        for (String i : keyWords) {
+            words.add(i);
+        }
+    }
+
     public ArrayList<String> getAllWords() {
         return words;
     }

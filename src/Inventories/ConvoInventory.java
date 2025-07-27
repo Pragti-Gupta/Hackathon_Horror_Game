@@ -7,18 +7,21 @@ import java.util.Scanner;
 
 public class ConvoInventory {
     ArrayList<String> availablePrompts;
+    ArrayList<Integer> promptsNotUsed;
     HashMap<String, String> responses;
 
 
     public ConvoInventory() {
         availablePrompts = new ArrayList<String>();
         responses = new HashMap<String, String>();
+        promptsNotUsed = new ArrayList<Integer>();
     }
 
 
     public void readPrompts(int articleNum) {
         Scanner promptsReader = FileUtils.openToRead("src/TextFiles/prompts.txt");
         String check = "";
+        availablePrompts = new ArrayList<String>();
         check = "PROMPTS" + articleNum;
         while(promptsReader.hasNextLine()){
             if(promptsReader.nextLine().equals(check)){
@@ -52,18 +55,34 @@ public class ConvoInventory {
             responseString = responseReader.nextLine();
             if (responseString.indexOf("~") != -1) break;
             responses.put(responseString.substring(0, responseString.indexOf(":")),
-                            responseString.substring(responseString.indexOf(":") + 1));
+                            responseString.substring(responseString.indexOf(":") + 2));
         }
 
         //System.out.println(responses);
     }
 
     public String getResponse(String input) {
-        return "";
+        return responses.get(input);
     }
 
     public String getPrompt(int promptNum) {
         return availablePrompts.get(promptNum-1);
+    }
+    public void resetPromptUsed(){
+        promptsNotUsed = new ArrayList<Integer>();
+        promptsNotUsed.add(1);
+        promptsNotUsed.add(2);
+    }
+    public int updatePromptsUsed(){
+        if(promptsNotUsed.size()>0){
+            int choose = (int)(Math.random()*promptsNotUsed.size());
+            int promptNum = promptsNotUsed.get(choose);
+            promptsNotUsed.remove(choose);
+            return promptNum;
+        }
+        else{
+            return -1;
+        }
     }
     
 }
