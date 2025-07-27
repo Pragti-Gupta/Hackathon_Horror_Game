@@ -61,5 +61,7 @@ public class WordsPopup extends JPanel{
 
     public void updateWords(ArrayList<String> allWords) {
         //JOptionPane.showMessageDialog(this, "Word not found in database.");
+        String wordList = "";
+       
     }
 }

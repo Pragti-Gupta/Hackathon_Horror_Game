@@ -29,7 +29,6 @@ public class ArticleInventory {
                 }
             }
         }
-        System.out.print(article);
     }
 
     public ArrayList<String> changeKeyWords(int articleNum){
@@ -64,6 +63,10 @@ public class ArticleInventory {
 
     public ArrayList<Integer> getUnusedArticles() {
         return articlesNotUsed;
+    }
+
+    public String getCurrentArticle() {
+        return article;
     }
     
 }
