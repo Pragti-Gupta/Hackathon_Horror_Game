@@ -1,6 +1,7 @@
 import Inventories.ConvoInventory;
 import Inventories.WordInventory;
 import Inventories.ArticleInventory;
+import GraphicInterface.*;
 import Utilities.Prompt;
 
 public class App {
@@ -19,7 +20,8 @@ public class App {
     public static void main(String[] args) throws Exception {
         System.out.println("Hello, World!");
         App newApp = new App();
-        newApp.gameLoop();
+        //newApp.gameLoop();
+        Chatbox ch = new Chatbox();
     }
     public void setUp(){
         currentArticle = article.updateArticlesUsed();
